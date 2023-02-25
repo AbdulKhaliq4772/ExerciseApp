@@ -4,7 +4,7 @@ const ExerciseDetails = ({ exercise }) => {
   return (
     <div>
       <div className=" bg-white mb-2 rounded-lg px-4 py-3 shadow-lg border border-slate-300 ">
-        <h4 className=" text-2xl  font-mono uppercase font-bold mb-2">
+        <h4 className=" text-2xl text-blue-500 font-mono uppercase font-bold mb-2">
           {exercise.title}
         </h4>
         <p>

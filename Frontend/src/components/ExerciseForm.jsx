@@ -10,18 +10,20 @@ const ExerciseForm = () => {
     e.preventDefault();
     const exercise = { title, load, reps };
 
-    const response = await fetch("/api/exercise", {
+    const response = await fetch("http://localhost:4000/api/exercise", {
       method: "POST",
       body: JSON.stringify(exercise),
-      header: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
     });
 
     const json = await response.json();
+    console.log(title, load, reps);
+    console.log(json);
     if (!response.ok) {
       setError(json.error);
+      console.log(title, load, reps);
     } else {
+      console.log(title, load, reps);
       setTitle("");
       setLoad("");
       setReps("");
