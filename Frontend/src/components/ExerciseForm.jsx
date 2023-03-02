@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import useData from "../hooks/useData";
+import { addExercise } from "../store/ExerciseSlice";
 
 const ExerciseForm = () => {
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
   const [error, setError] = useState("");
+
+  const [add, setAdd] = useData();
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +28,9 @@ const ExerciseForm = () => {
     console.log(json);
     if (!response.ok) {
       setError(json.error);
-      console.log(title, load, reps);
     } else {
+      // dispatch(addExercise(exercise));
+      setAdd(json);
       console.log(title, load, reps);
       setTitle("");
       setLoad("");
