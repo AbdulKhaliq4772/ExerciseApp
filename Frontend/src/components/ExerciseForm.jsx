@@ -1,7 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useDispatch } from "react-redux";
-import useData from "../hooks/useData";
-import { addExercise } from "../store/ExerciseSlice";
 
 const ExerciseForm = () => {
   const [title, setTitle] = useState("");
@@ -9,29 +6,20 @@ const ExerciseForm = () => {
   const [reps, setReps] = useState("");
   const [error, setError] = useState("");
 
-  const [add, setAdd] = useData();
-
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const exercise = { title, load, reps };
 
-    const response = await fetch("http://localhost:4000/api/exercise", {
+    const response = await fetch("http://localhost:5000/api/exercise", {
       method: "POST",
       body: JSON.stringify(exercise),
       headers: { "Content-Type": "application/json" },
     });
 
     const json = await response.json();
-    console.log(title, load, reps);
-    console.log(json);
     if (!response.ok) {
       setError(json.error);
     } else {
-      // dispatch(addExercise(exercise));
-      setAdd(json);
-      console.log(title, load, reps);
       setTitle("");
       setLoad("");
       setReps("");

@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { deleteExercise } from "../store/ExerciseSlice";
+import { deleteExercise } from "../store/exerciseSlice";
 
 const ExerciseDetails = ({ exercise }) => {
   const dispatch = useDispatch();
@@ -10,8 +10,10 @@ const ExerciseDetails = ({ exercise }) => {
       method: "DELETE",
     });
     const response = await api.json();
-    console.log(response);
-    dispatch(deleteExercise(id));
+    if (response.ok) {
+      console.log(response);
+      dispatch(deleteExercise(response));
+    }
   };
 
   return (

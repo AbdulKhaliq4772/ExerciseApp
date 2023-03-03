@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const exerciseSlice = createSlice({
-  name: "exercises",
+  name: "exercise",
   initialState: [],
   reducers: {
     addExercise(state, action) {
@@ -10,8 +10,10 @@ const exerciseSlice = createSlice({
     deleteExercise(state, action) {
       return state.filter((exercise) => exercise.id !== action.payload);
     },
+    updateExercise(state, action) {},
   },
 });
 
-export const { addExercise, deleteExercise } = exerciseSlice.actions;
+export const { addExercise, deleteExercise, updateExercise } =
+  exerciseSlice.actions;
 export default exerciseSlice.reducer;

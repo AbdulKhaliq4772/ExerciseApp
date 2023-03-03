@@ -2,9 +2,22 @@ import React, { useEffect, useState } from "react";
 import ExerciseDetails from "../components/ExerciseDetails";
 import ExerciseForm from "../components/ExerciseForm";
 import { useDispatch, useSelector } from "react-redux";
+import { addExercise } from "../store/exerciseSlice";
 
 const Home = () => {
-  const exercises = useSelector((state) => state.exercises);
+  const exercises = useSelector((state) => state.exercise);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchExercises = async () => {
+      const api = await fetch("http://localhost:5000/api/exercise");
+      const data = await api.json();
+      if (api.ok) {
+        dispatch(addExercise(data));
+      }
+    };
+    fetchExercises();
+  }, [exercises]);
 
   return (
     <div className="flex justify-center py-5 ">
