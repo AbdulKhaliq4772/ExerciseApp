@@ -7,13 +7,12 @@ const useData = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const api = async () => {
-      const response = await fetch("http://localhost:4000/api/exercise");
+      const response = await fetch("http://localhost:5000/api/exercise");
       // console.log(response);
       const data = await response.json();
-      //   console.log(data);
+      // console.log(data);
       if (response.ok) {
         dispatch(addExercise(data));
-        // setExercises(data);
       }
     };
     api();
