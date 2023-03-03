@@ -31,17 +31,11 @@ const ExerciseDetails = ({ exercise }) => {
             <strong>reps: </strong>
             {exercise.reps}
           </p>
-          <p>{exercise.createdAt}</p>
+          {/* <p>{exercise.createdAt}</p> */}
         </div>
         <div className="flex flex-col justify-around">
           <button
-            className=" capitalize shadow-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => console.log("updated")}
-          >
-            Edit
-          </button>
-          <button
-            className="  capitalize shadow-lg bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            className="  capitalize shadow-lg bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
             onClick={() => handleDelete(exercise._id)}
           >
             delete
