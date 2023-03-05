@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
+import { useDispatch } from "react-redux";
+import { changeToggle } from "../store/toggleSlice";
 
 const ExerciseForm = () => {
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,11 +18,11 @@ const ExerciseForm = () => {
       body: JSON.stringify(exercise),
       headers: { "Content-Type": "application/json" },
     });
-
     const json = await response.json();
     if (!response.ok) {
       setError(json.error);
     } else {
+      dispatch(changeToggle());
       setTitle("");
       setLoad("");
       setReps("");

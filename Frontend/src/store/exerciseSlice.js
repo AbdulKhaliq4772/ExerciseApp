@@ -8,12 +8,10 @@ const exerciseSlice = createSlice({
       return action.payload;
     },
     deleteExercise(state, action) {
-      return state.filter((exercise) => exercise.id !== action.payload);
+      return state.filter((exercise) => exercise._id !== action.payload);
     },
-    updateExercise(state, action) {},
   },
 });
 
-export const { addExercise, deleteExercise, updateExercise } =
-  exerciseSlice.actions;
+export const { addExercise, deleteExercise } = exerciseSlice.actions;
 export default exerciseSlice.reducer;

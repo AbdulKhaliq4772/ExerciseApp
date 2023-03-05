@@ -1,18 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteExercise } from "../store/exerciseSlice";
+import { changeToggle } from "../store/toggleSlice";
 
 const ExerciseDetails = ({ exercise }) => {
   const dispatch = useDispatch();
-
   const handleDelete = async (id) => {
-    const api = await fetch(`http://localhost:5000/api/exercise/${id}`, {
+    const response = await fetch(`http://localhost:5000/api/exercise/${id}`, {
       method: "DELETE",
     });
-    const response = await api.json();
+    const data = await response.json();
     if (response.ok) {
-      console.log(response);
-      dispatch(deleteExercise(response));
+      console.log("exercise deleted", data);
+      dispatch(deleteExercise(id));
     }
   };
 

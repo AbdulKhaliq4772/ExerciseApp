@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ExerciseDetails from "../components/ExerciseDetails";
 import ExerciseForm from "../components/ExerciseForm";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { addExercise } from "../store/exerciseSlice";
 
 const Home = () => {
   const exercises = useSelector((state) => state.exercise);
+  const toggle = useSelector((state) => state.toggle);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Home = () => {
       }
     };
     fetchExercises();
-  }, [exercises]);
+  }, [toggle]);
 
   return (
     <div className="flex justify-center py-5 ">
